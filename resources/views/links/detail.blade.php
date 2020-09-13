@@ -103,7 +103,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     @csrf
-                                                    @method('DELETE');
+                                                    @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Delete Link</button>
                                                 </div>
                                             </div>
