@@ -12,6 +12,6 @@ class LinksExport implements FromCollection
     */
     public function collection()
     {
-        return Link::all();
+        return Link::select('id','title','link','description','keywords','created_at')->get();
     }
 }
