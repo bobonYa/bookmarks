@@ -5,6 +5,17 @@
             <div class="col-12 card">
                 <div class="card-body">
                     <h2 class="card-title">All links</h2>
+                    <form action="{{ url('search') }}" method="get">
+                        <div class="form-group">
+                            <input
+                                type="text"
+                                name="q"
+                                class="form-control"
+                                placeholder="Search..."
+                                value="{{ request('q') }}"
+                            />
+                        </div>
+                    </form>
                     <table class="display table" id="datatables">
                         <thead>
                         <tr>

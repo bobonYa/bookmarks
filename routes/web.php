@@ -38,7 +38,10 @@ Route::group(['prefix' => 'dashboard'], function () {
 Route::get('/links/export', 'LinkController@export');
 
 
-Route::get('/1', function () {
-    dd(Hash::make('123'),Hash::make('123') );
+Route::get('search', function (\App\Links\LinksRepository $repository) {
+    $links = $repository->search(request('q'));
 
+    return view('links.search', [
+        'links' => $links,
+    ]);
 });
