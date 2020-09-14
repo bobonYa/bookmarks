@@ -1,6 +1,24 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        <form action="{{ url('search') }}" method="get">
+            <div class="row">
+                <div class="col-10">
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            name="q"
+                            class="form-control"
+                            placeholder="Search..."
+                            value="{{ request('q') }}"
+                        />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
         <div class="card">
             <div class="card-header">
                 Links <small>({{ $links->count() }})</small>
