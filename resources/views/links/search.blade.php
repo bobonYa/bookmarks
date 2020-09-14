@@ -8,10 +8,10 @@
             <div class="card-body">
                 @forelse ($links as $link)
                     <article class="mb-3">
-                        <h2>{{ $link->title }}</h2>
-                        <p class="m-0">{{ $link->description }}</body>
-                        <p class="m-0">{{ $link->keywords }}</body>
-                        <p class="m-0">{{ $link->link }}</body>
+                        <a href="/dashboard/links/{{ $link->id }}"><h4>{{ $link->title }}</h4></a>
+                        <p class="m-0">{{ $link->description }}</p>
+                        <p class="m-0">{{ $link->keywords }}</p>
+                        <p class="m-0"><a href="{{ $link->link }}" target="_blank">{{ $link->link }}</a></p>
 
                     </article>
                 @empty

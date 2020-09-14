@@ -13,15 +13,18 @@ class ElasticsearchRepository implements LinksRepository
 
     /** @var \Elasticsearch\Client */
     private $elasticsearch;
+
     public function __construct(Client $elasticsearch)
     {
         $this->elasticsearch = $elasticsearch;
     }
+
     public function search(string $query = ''): Collection
     {
         $items = $this->searchOnElasticsearch($query);
         return $this->buildCollection($items);
     }
+
     private function searchOnElasticsearch(string $query = ''): array
     {
         $model = new Link;
@@ -31,7 +34,8 @@ class ElasticsearchRepository implements LinksRepository
             'body' => [
                 'query' => [
                     'multi_match' => [
-                        'fields' => ['title', 'link', 'description','keywords'],
+                        'fields' => ['title', 'link', 'description', 'keywords'],
+                        'fuzziness' => 'AUTO',
                         'query' => $query,
                     ],
                 ],
@@ -39,6 +43,7 @@ class ElasticsearchRepository implements LinksRepository
         ]);
         return $items;
     }
+
     private function buildCollection(array $items): Collection
     {
         $ids = Arr::pluck($items['hits']['hits'], '_id');

@@ -100,9 +100,9 @@ class LinkController extends Controller
         foreach ($linksData as $link) {
             $created_at = $link->created_at->toDateString();
             $favicon = empty($link->favicon) ? "" : "<img src='{$link->favicon}'>";
-            $url = "<a href='{$link->link}'>" . mb_strimwidth($link->link, 0, 40, "...") . "</a>";
+            $url = "<a href='{$link->link}' target='_blank'>" . mb_strimwidth($link->link, 0, 40, "...") . "</a>";
             $title = mb_strimwidth($link->title, 0, 40, "...");
-            $detailUrl = "<a href='/dashboard/links/{$link->id}'> Detail </a>";
+            $detailUrl = "<a href='/dashboard/links/{$link->id}' > Detail </a>";
             $rawsData[] = [
                 $created_at,
                 $favicon,
